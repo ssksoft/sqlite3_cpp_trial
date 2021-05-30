@@ -13,6 +13,11 @@ int _tmain(int argc, _TCHAR *argv[])
     // オープンに失敗しても、Closeは行う必要がある。
     sqlite3 *db = NULL;
     ret = sqlite3_open("testdb.db", &db);
+
+    ret = sqlite3_exec(db, "CREATE TABLE TESTTBL("
+                           "IDX INTEGER PRIMARY KEY, VAL1 VARCHAR);",
+                       NULL, NULL, NULL);
+
     sqlite3_close(db);
     return 0;
 }
